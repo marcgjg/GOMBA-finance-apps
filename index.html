@@ -4,6 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>GOMBA – Finance Course | IE Business School</title>
+  <link rel="icon" type="image/png" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAABCGlDQ1BJQ0MgUHJvZmlsZQAAeJxjYGA8wQAELAYMDLl5JUVB7k4KEZFRCuwPGBiBEAwSk4sLGHADoKpv1yBqL+viUYcLcKakFicD6Q9ArFIEtBxopAiQLZIOYWuA2EkQtg2IXV5SUAJkB4DYRSFBzkB2CpCtkY7ETkJiJxcUgdT3ANk2uTmlyQh3M/Ck5oUGA2kOIJZhKGYIYnBncAL5H6IkfxEDg8VXBgbmCQixpJkMDNtbGRgkbiHEVBYwMPC3MDBsO48QQ4RJQWJRIliIBYiZ0tIYGD4tZ2DgjWRgEL7AwMAVDQsIHG5TALvNnSEfCNMZchhSgSKeDHkMyQx6QJYRgwGDIYMZAKbWPz9HbOBQAAADRElEQVR4nO2XT2gcVRzHP+/NZHazu+l213TRRaO2gdiuB0uqlFhbxCiWCEHa7b2XeqgIDaW5iBeltPRUCh6koD3lIj34Bw+2CormIC00UutB0IIklaTGZbP/Zua9Xw+b3aBuxmYlTQ/9XmbmzZ/f533f9/1glIgIGyi9kcUfANz/AAJYaR7XS27UTQUotY7VWcWB1ozLgTC9IDSM/G183QEAfCu8fU148wc4eV3WbRn+BSA0rQ8s3KwoLIpfKworzTCEoUVEEJH2+f+R6tQJWxBX/4IvZuHgAAylVv+IiKC6DEvnEIqAUnww8SHXZ25QefFZTp4p4vshZ89+ycWLV/EbIa/uf5oTJ/aTTie6h5AOstaKiMjOne8JjMvY2DkREXlt7JzAAXGdN2RT31sCB2R4+F0plapirW2/txZF9oFU0kNrj3w+zeXLN/js828YeGwr330/ycyP7zA6OsKVK9c4f/5blFIYs/Y8RPYBawVrLUopvv7qZ7Tu4datJV7YcwZrBWMsEPLpJzNMTLzSVc+IBGhJAclUDJGQwcEtjDy/jUYjJJn0cF3D9u0Dzee6IIhcAq0VjuMQBIbx8WcQcfD9BseOjXLhwmEKhTzZbJojR/Z2HcJIB8rlBsbUmJ0rsWNHnsnJIqdPT1EoHAdSwDyu00+xuItC4dGuICIB9uwdJP2Q8NzuJwmtcOrU6+we2crU1DTz80sMD7/M0aMv8cRAltA2i3fKoRPB1LERra5Wi7rb8f9WpAMf/2b4ow6eQ7uAMQZoBs5awXHUsu2ywiArB1fDoccVKVd1xIwECD2HcgNigFqOqyi9st0EQgNO695yYa3bzRQbgokwOXIJfv9lji3ZXqyFSrWB62ocR1OrBWjdnHkmk6BUqgEQi7lorSmX68TjLrVaQC6fAS/WBvqnOjrQQnr/o2my2QSZTJLbt5cIAsPin1UeyW8mlfJYXKyyb98Qly79xFNDD1Op+MzOlejvT1Kt+iggl0tTPLirDbwmBxYWylgrTSut0NvbgzFCvR7gOBpjLH19cer1gCAwJBIenudSKtWIx3vw/ZAwNORym3BdZ+1LcC8UGcK7Y1veAateR7foDXfg/v4veABwL3QH49i57W9ZbAoAAAAASUVORK5CYII=" />
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
@@ -130,7 +131,9 @@
     }
 
     .app-card {
-      display: block;
+      display: flex;
+      flex-direction: column;
+      flex: 1;
       background: var(--bg-card);
       border: 0.5px solid var(--border);
       border-radius: var(--radius-lg);
@@ -138,12 +141,13 @@
       text-decoration: none;
       color: inherit;
       transition: border-color 0.15s, background 0.15s;
-      flex: 1;
     }
     .app-card:hover {
       border-color: var(--border-md);
       background: var(--bg-soft);
     }
+
+    .card-body { flex: 1; }
 
     .card-icon {
       width: clamp(30px, 4vw, 36px);
@@ -164,7 +168,6 @@
     .card-desc {
       font-size: var(--fs-desc);
       color: var(--text-2);
-      margin-bottom: 14px;
       line-height: 1.5;
     }
     .card-link {
@@ -173,6 +176,9 @@
       display: flex;
       align-items: center;
       gap: 4px;
+      margin-top: 14px;
+      padding-top: 12px;
+      border-top: 0.5px solid var(--border);
     }
     .card-link svg { width: 12px; height: 12px; flex-shrink: 0; }
 
@@ -210,28 +216,32 @@
     <div class="session-col">
       <p class="session-label">Session 1 · Time value of money. Interest rates</p>
       <a class="app-card" href="https://pv-and-fv.streamlit.app/" target="_blank" rel="noopener">
-        <div class="card-icon" style="background:var(--blue-bg);">
-          <svg viewBox="0 0 20 20" width="18" height="18" fill="none" aria-hidden="true">
-            <circle cx="10" cy="10" r="7.5" stroke="var(--blue-ic)" stroke-width="1.2"/>
-            <path d="M7 10h6M10 7v6" stroke="var(--blue-ic)" stroke-width="1.2" stroke-linecap="round"/>
-          </svg>
+        <div class="card-body">
+          <div class="card-icon" style="background:var(--blue-bg);">
+            <svg viewBox="0 0 20 20" width="18" height="18" fill="none" aria-hidden="true">
+              <circle cx="10" cy="10" r="7.5" stroke="var(--blue-ic)" stroke-width="1.2"/>
+              <path d="M7 10h6M10 7v6" stroke="var(--blue-ic)" stroke-width="1.2" stroke-linecap="round"/>
+            </svg>
+          </div>
+          <p class="card-name">Future value / Present value</p>
+          <p class="card-desc">Visualise how money grows or discounts over time with adjustable rate and horizon.</p>
         </div>
-        <p class="card-name">Future value / Present value</p>
-        <p class="card-desc">Visualise how money grows or discounts over time with adjustable rate and horizon.</p>
         <span class="card-link">Open app <svg viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M2 10L10 2M5 2h5v5" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
       </a>
     </div>
     <div class="session-col">
       <p class="session-label">Session 3 · Valuing bonds and shares</p>
       <a class="app-card" href="https://ytm-bond-price.streamlit.app/" target="_blank" rel="noopener">
-        <div class="card-icon" style="background:var(--blue-bg);">
-          <svg viewBox="0 0 20 20" width="18" height="18" fill="none" aria-hidden="true">
-            <path d="M3 14L7 9l4 2 6-6" stroke="var(--blue-ic)" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
-            <circle cx="17" cy="5" r="1.5" fill="var(--blue-ic)"/>
-          </svg>
+        <div class="card-body">
+          <div class="card-icon" style="background:var(--blue-bg);">
+            <svg viewBox="0 0 20 20" width="18" height="18" fill="none" aria-hidden="true">
+              <path d="M3 14L7 9l4 2 6-6" stroke="var(--blue-ic)" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+              <circle cx="17" cy="5" r="1.5" fill="var(--blue-ic)"/>
+            </svg>
+          </div>
+          <p class="card-name">Bond price vs yield to maturity</p>
+          <p class="card-desc">Explore the inverse relationship between bond prices and YTM across maturities and coupons.</p>
         </div>
-        <p class="card-name">Bond price vs yield to maturity</p>
-        <p class="card-desc">Explore the inverse relationship between bond prices and YTM across maturities and coupons.</p>
         <span class="card-link">Open app <svg viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M2 10L10 2M5 2h5v5" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
       </a>
     </div>
@@ -242,30 +252,34 @@
     <div class="session-col">
       <p class="session-label">Session 5 · Investment appraisal</p>
       <a class="app-card" href="https://npv-and-irr.streamlit.app/" target="_blank" rel="noopener">
-        <div class="card-icon" style="background:var(--green-bg);">
-          <svg viewBox="0 0 20 20" width="18" height="18" fill="none" aria-hidden="true">
-            <rect x="3" y="12" width="3" height="5" rx="1" fill="var(--green-ic)"/>
-            <rect x="8.5" y="8" width="3" height="9" rx="1" fill="var(--green-ic)"/>
-            <rect x="14" y="4" width="3" height="13" rx="1" fill="var(--green-ic)"/>
-          </svg>
+        <div class="card-body">
+          <div class="card-icon" style="background:var(--green-bg);">
+            <svg viewBox="0 0 20 20" width="18" height="18" fill="none" aria-hidden="true">
+              <rect x="3" y="12" width="3" height="5" rx="1" fill="var(--green-ic)"/>
+              <rect x="8.5" y="8" width="3" height="9" rx="1" fill="var(--green-ic)"/>
+              <rect x="14" y="4" width="3" height="13" rx="1" fill="var(--green-ic)"/>
+            </svg>
+          </div>
+          <p class="card-name">NPV and IRR</p>
+          <p class="card-desc">Build cash flow profiles and compute net present value and internal rate of return interactively.</p>
         </div>
-        <p class="card-name">NPV and IRR</p>
-        <p class="card-desc">Build cash flow profiles and compute net present value and internal rate of return interactively.</p>
         <span class="card-link">Open app <svg viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M2 10L10 2M5 2h5v5" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
       </a>
     </div>
     <div class="session-col">
       <p class="session-label">Session 7 · Portfolio selection and the CAPM</p>
       <a class="app-card" href="https://two-asset-portfolio.streamlit.app/" target="_blank" rel="noopener">
-        <div class="card-icon" style="background:var(--purple-bg);">
-          <svg viewBox="0 0 20 20" width="18" height="18" fill="none" aria-hidden="true">
-            <ellipse cx="10" cy="13" rx="7" ry="3" stroke="var(--purple-ic)" stroke-width="1.2"/>
-            <circle cx="5" cy="8" r="2" stroke="var(--purple-ic)" stroke-width="1.2"/>
-            <circle cx="15" cy="8" r="2" stroke="var(--purple-ic)" stroke-width="1.2"/>
-          </svg>
+        <div class="card-body">
+          <div class="card-icon" style="background:var(--purple-bg);">
+            <svg viewBox="0 0 20 20" width="18" height="18" fill="none" aria-hidden="true">
+              <ellipse cx="10" cy="13" rx="7" ry="3" stroke="var(--purple-ic)" stroke-width="1.2"/>
+              <circle cx="5" cy="8" r="2" stroke="var(--purple-ic)" stroke-width="1.2"/>
+              <circle cx="15" cy="8" r="2" stroke="var(--purple-ic)" stroke-width="1.2"/>
+            </svg>
+          </div>
+          <p class="card-name">Two-asset efficient frontier</p>
+          <p class="card-desc">Trace the risk-return frontier for a two-asset portfolio as correlation and weights vary.</p>
         </div>
-        <p class="card-name">Two-asset efficient frontier</p>
-        <p class="card-desc">Trace the risk-return frontier for a two-asset portfolio as correlation and weights vary.</p>
         <span class="card-link">Open app <svg viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M2 10L10 2M5 2h5v5" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
       </a>
     </div>
@@ -276,28 +290,32 @@
     <div class="session-col">
       <p class="session-label">Session 9 · Cost of capital</p>
       <a class="app-card" href="https://industry-matching-game.streamlit.app/" target="_blank" rel="noopener">
-        <div class="card-icon" style="background:var(--purple-bg);">
-          <svg viewBox="0 0 20 20" width="18" height="18" fill="none" aria-hidden="true">
-            <path d="M4 16V8M8 16V5M12 16V9M16 16V3" stroke="var(--purple-ic)" stroke-width="1.2" stroke-linecap="round"/>
-            <circle cx="16" cy="3" r="1.5" fill="var(--purple-ic)"/>
-          </svg>
+        <div class="card-body">
+          <div class="card-icon" style="background:var(--purple-bg);">
+            <svg viewBox="0 0 20 20" width="18" height="18" fill="none" aria-hidden="true">
+              <path d="M4 16V8M8 16V5M12 16V9M16 16V3" stroke="var(--purple-ic)" stroke-width="1.2" stroke-linecap="round"/>
+              <circle cx="16" cy="3" r="1.5" fill="var(--purple-ic)"/>
+            </svg>
+          </div>
+          <p class="card-name">Industry matching game</p>
+          <p class="card-desc">Match industries to their beta, leverage, and WACC profiles to build intuition for the cost of capital.</p>
         </div>
-        <p class="card-name">Industry matching game</p>
-        <p class="card-desc">Match industries to their beta, leverage, and WACC profiles to build intuition for the cost of capital.</p>
         <span class="card-link">Open app <svg viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M2 10L10 2M5 2h5v5" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
       </a>
     </div>
     <div class="session-col">
       <p class="session-label">Session 11 · Capital structure</p>
       <a class="app-card" href="https://capital-structure.streamlit.app/" target="_blank" rel="noopener">
-        <div class="card-icon" style="background:var(--amber-bg);">
-          <svg viewBox="0 0 20 20" width="18" height="18" fill="none" aria-hidden="true">
-            <path d="M10 3C5 3 3 7 3 10c0 3 2 7 7 7s7-4 7-7c0-3-2-7-7-7z" stroke="var(--amber-ic)" stroke-width="1.2"/>
-            <path d="M3 10Q10 7 17 10" stroke="var(--amber-ic)" stroke-width="1.2" stroke-linecap="round"/>
-          </svg>
+        <div class="card-body">
+          <div class="card-icon" style="background:var(--amber-bg);">
+            <svg viewBox="0 0 20 20" width="18" height="18" fill="none" aria-hidden="true">
+              <path d="M10 3C5 3 3 7 3 10c0 3 2 7 7 7s7-4 7-7c0-3-2-7-7-7z" stroke="var(--amber-ic)" stroke-width="1.2"/>
+              <path d="M3 10Q10 7 17 10" stroke="var(--amber-ic)" stroke-width="1.2" stroke-linecap="round"/>
+            </svg>
+          </div>
+          <p class="card-name">Optimal capital structure</p>
+          <p class="card-desc">See how firm value evolves with leverage under trade-off theory — tax shield versus distress costs.</p>
         </div>
-        <p class="card-name">Optimal capital structure</p>
-        <p class="card-desc">See how firm value evolves with leverage under trade-off theory — tax shield versus distress costs.</p>
         <span class="card-link">Open app <svg viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M2 10L10 2M5 2h5v5" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
       </a>
     </div>
